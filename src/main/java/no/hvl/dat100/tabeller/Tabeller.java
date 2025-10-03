@@ -5,9 +5,12 @@ public class Tabeller {
     // a)
     public static void skrivUt(int[] tabell) {
         for (int i = 0; i < tabell.length; i++) {
-            System.out.print(tabell[i] + " ");
-            System.out.println(); // linjeskift til slutt
+            System.out.print(tabell[i]);
+            if (i < tabell.length - 1) {
+                System.out.print(", ");
+            }
         }
+        System.out.println();
     }
 
     // b)
@@ -23,21 +26,19 @@ public class Tabeller {
         return s;
     }
 
-
     // c)
     public static int summer(int[] tabell) {
         int sum = 0;
-        for (int i = 0; i < tabell.length; i++) {
-            sum += tabell[i];
+        for (int tall : tabell) {
+            sum += tall;
         }
         return sum;
     }
 
-
 	// d)
     public static boolean finnesTall(int[] tabell, int tall) {
-        for (int i = 0; i < tabell.length; i++) {
-            if (tabell[i] == tall) {
+        for (int t : tabell) {
+            if (t == tall) {
                 return true;
             }
         }
@@ -56,15 +57,12 @@ public class Tabeller {
 
 	// f)
     public static int[] reverser(int[] tabell) {
-        int[] ny = new int[tabell.length];
+        int[] nyTabell = new int[tabell.length];
         for (int i = 0; i < tabell.length; i++) {
-            ny[i] = tabell[tabell.length - 1 - i];
+            nyTabell[i] = tabell[tabell.length - 1 - i];
         }
-        return ny;
+        return nyTabell;
     }
-
-
-
 
 	// g)
     public static boolean erSortert(int[] tabell) {
@@ -75,24 +73,16 @@ public class Tabeller {
         }
         return true;
     }
-
-
-
 	// h)
     public static int[] settSammen(int[] tabell1, int[] tabell2) {
-        int[] ny = new int[tabell1.length + tabell2.length];
-
-        // kopier tabell1
+        int[] nyTabell = new int[tabell1.length + tabell2.length];
         for (int i = 0; i < tabell1.length; i++) {
-            ny[i] = tabell1[i];
+            nyTabell[i] = tabell1[i];
         }
-
-        // kopier tabell2
-        for (int j = 0; j < tabell2.length; j++) {
-            ny[tabell1.length + j] = tabell2[j];
+        for (int i = 0; i < tabell2.length; i++) {
+            nyTabell[tabell1.length + i] = tabell2[i];
         }
-
-        return ny;
+        return nyTabell;
     }
 }
 
